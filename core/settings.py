@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -121,3 +122,59 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Logging Settings
+import logging
+from logging.handlers import TimedRotatingFileHandler
+
+# Get the environment variable value
+ENV = os.getenv('SOD_ENV')
+
+# Set the logging level based on the environment
+if ENV == 'dev':
+    LOG_LEVEL = 'INFO'
+elif ENV == 'qa':
+    LOG_LEVEL = 'INFO'
+elif ENV == 'prod':
+    LOG_LEVEL = 'WARNING'
+elif ENV == 'uat':
+    LOG_LEVEL = 'WARNING'
+else:
+    LOG_LEVEL = 'DEBUG'
+
+LOGGER_ROOT = os.path.join(CORE_DIR, 'logs/sod-server.log')
+print("Logger root is : "+ LOGGER_ROOT)
+print("Loading log level : "+LOG_LEVEL + " as per env : "+ENV)
+LOGGING = {
+    'formatters': {
+    'verbose': {
+        'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s',
+        'datefmt': '%Y-%m-%d %H:%M:%S',
+    },
+    },
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': LOG_LEVEL,
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': LOGGER_ROOT,
+            'when': 'midnight',
+            'interval': 1,
+            'backupCount': 366,
+            'formatter': 'verbose',
+        },
+    },
+    'root': {
+        'handlers': ['file'],
+        'level': LOG_LEVEL,
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': LOG_LEVEL,
+            'propagate': True,
+        },
+    },
+}
+
