@@ -86,17 +86,9 @@ DATABASES = {
             'HOST': '127.0.0.1', 
             'PORT': '5432',
         },
-    "users": {
-            "NAME": "diaryusers",
-            "ENGINE": "django.db.backends.mysql",
-            'HOST': '139.59.28.7', 
-            'PORT': '3306',
-            "USER": "samremote",
-            "PASSWORD": "Test@123",
-        },
 }
 
-DATABASE_ROUTERS = ['core.db_routers.DefaultRouter','core.db_routers.UserRouter']
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
