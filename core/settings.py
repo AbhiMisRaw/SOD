@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,11 +79,24 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'sod', 
+            'USER': 'postgres', 
+            'PASSWORD': 'Test@123',
+            'HOST': '127.0.0.1', 
+            'PORT': '5432',
+        },
+    "users": {
+            "NAME": "diaryusers",
+            "ENGINE": "django.db.backends.mysql",
+            'HOST': '139.59.28.7', 
+            'PORT': '3306',
+            "USER": "samremote",
+            "PASSWORD": "Test@123",
+        },
 }
 
+DATABASE_ROUTERS = ['core.db_routers.DefaultRouter','core.db_routers.UserRouter']
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -129,7 +145,7 @@ from logging.handlers import TimedRotatingFileHandler
 
 # Get the environment variable value
 ENV = os.getenv('SOD_ENV')
-
+print("SOD_ENV is : "+ENV)
 # Set the logging level based on the environment
 if ENV == 'dev':
     LOG_LEVEL = 'INFO'
