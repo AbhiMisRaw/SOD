@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -55,10 +56,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'core.urls'
 
+TEMPLATE_DIR = os.path.join(CORE_DIR, "templates")  # ROOT dir for templates
+print("templates directory path is :"+str(TEMPLATE_DIR))
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,7 +92,8 @@ DATABASES = {
         },
 }
 
-
+# Custom Authentication Backend
+AUTHENTICATION_BACKENDS = ['core.backends.CustomUserModelBackend',]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
