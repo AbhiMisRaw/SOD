@@ -15,9 +15,7 @@ def register_view(request):
             # Add more fields as needed
         }
         response = register_user(data)
-        # Handle the response as needed
-        if response['status'] == 'success':  # Adjust this based on the actual API response
-            # Store the user's information in the session
+        if response['status'] == 'success':  
             request.session['username'] = data['email']
             # If the API returns a token, you can store it in the session as well
             request.session['token'] = response.get('token')
