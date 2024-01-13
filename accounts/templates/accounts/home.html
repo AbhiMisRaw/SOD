@@ -8,5 +8,10 @@
 <body>
     <h1>Welcome to the Home Page</h1>
     <p>This is a sample home page for the accounts app.</p>
+    
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
 </body>
 </html>

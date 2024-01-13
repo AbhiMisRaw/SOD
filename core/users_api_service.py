@@ -27,3 +27,16 @@ def register_user(data):
 def login_user(data):
     response = requests.post(f'{BASE_URL}user/login/', data=data)
     return response.json()
+
+def logout_user(data):
+    
+    # Extract the token from the login response
+    token = data["token"] # Adjust this based on the actual API response
+
+    # Add the token to the headers for the logout request
+    headers = {
+        'Authorization': f'Token {token}',
+    }
+
+    response = requests.post(f'{BASE_URL}user/logout/', headers=headers)
+    return response
