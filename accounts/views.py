@@ -41,7 +41,7 @@ def login_view(request):
         else:
             messages.error(request, 'Login failed. Please try again.')
     else:
-        return render(request, 'accounts/login.html')
+        return render(request, 'sod/login.html')
 
 def home_view(request):
     if request.method == 'POST':
