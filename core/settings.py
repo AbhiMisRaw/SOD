@@ -132,9 +132,9 @@ STATIC_ROOT = os.path.join(CORE_DIR, 'static')
 
 STATIC_URL = 'static/'
 
-# Extra places for collectstatic to find static files.
+# Extra places for collectstatic to find static files. - source directory for static files
 STATICFILES_DIRS = (
-    os.path.join(CORE_DIR, 'sod/static'),
+    os.path.join(CORE_DIR, 'frontend/public'),
 )
 
 print("core directory path is :"+str(CORE_DIR))
