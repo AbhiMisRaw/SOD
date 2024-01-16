@@ -29,8 +29,8 @@ def register_view(request):
 def login_view(request):
     if request.method == 'POST':
         data = {
-            'email': request.POST['email'],
-            'password': request.POST['password'],
+            'email': request.POST.get('email'),
+            'password': request.POST.get('password'),
             # Add more fields as needed
         }
         response = login_user(data)

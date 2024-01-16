@@ -105,6 +105,8 @@
                         <hr class="bg-body-secondary mt-5 mb-4" />
                         <div class="divider-content-center bg-body-emphasis">or use email</div>
                       </div>
+                      <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
                       <div class="mb-3 text-start">
                         <label class="form-label" for="email">Email address</label>
                         <div class="form-icon-container">
@@ -126,8 +128,7 @@
                         </div>
                         <div class="col-auto"><a class="fs-9 fw-semibold" href="{% static 'pages/authentication/card/forgot-password.html'%}">Forgot Password?</a></div>
                       </div>
-                      <form action="{% url 'login' %}" method="post">
-                        {% csrf_token %}
+                      
                         <button class="btn btn-primary w-100 mb-3" type="submit">Sign In</button>
                         </form>
                       <div class="text-center"><a class="fs-9 fw-bold" href="{% static 'pages/authentication/card/sign-up.html'%}">Create an account</a></div>
