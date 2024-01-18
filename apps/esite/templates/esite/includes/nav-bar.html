@@ -36,7 +36,7 @@
               <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="sun"></span></label>
             </div>
           </div>
-          <a class="btn btn-link text-body order-1 order-lg-0 ps-4 me-lg-2" href="{% static 'pages/authentication/simple/sign-in.html'%}">Sign in</a><a class="btn btn-phoenix-primary order-0" href="{% static 'pages/authentication/simple/sign-up.html'%}"><span class="fw-bold">Sign Up</span></a>
+          <a class="btn btn-link text-body order-1 order-lg-0 ps-4 me-lg-2" href="{% url 'apps.accounts:login'%}">Sign in</a><a class="btn btn-phoenix-primary order-0" href="{% static 'pages/authentication/simple/sign-up.html'%}"><span class="fw-bold">Sign Up</span></a>
         </div>
       </div>
     </nav>

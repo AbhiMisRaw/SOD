@@ -7,7 +7,7 @@ def logout_view(request):
     data['token'] = request.session['token']
     logout_user(data)
     request.session['token'] = None
-    return redirect('login')
+    return redirect('/')
 
 def register_view(request):
     if request.method == 'POST':
@@ -37,7 +37,7 @@ def login_view(request):
         if response['status'] == 'success':
             request.session['email'] = data['email']
             request.session['token'] = response.get('token')
-            return redirect('home')
+            return redirect('apps.accounts:home')
         else:
             messages.error(request, 'Login failed. Please try again.')
     else:
