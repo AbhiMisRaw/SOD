@@ -2,7 +2,7 @@
 <div class="bg-body-emphasis sticky-top landing-navbar" data-navbar-shadow-on-scroll="data-navbar-shadow-on-scroll">
     <nav class="navbar navbar-expand-lg container-small px-3 px-lg-7 px-xxl-3"><a class="navbar-brand flex-1 flex-lg-grow-0" href="{% static 'index.html'%}">
         <div class="d-flex align-items-center"><img src="{% static 'assets/img/icons/logo.png'%}" alt="phoenix" width="27" />
-          <p class="logo-text ms-2">phoenix</p>
+          <p class="logo-text ms-2">StockODiary</p>
         </div>
       </a>
       <div class="d-lg-none">
@@ -19,10 +19,9 @@
             <form class="position-relative" data-bs-toggle="search" data-bs-display="static">
               <input class="form-control search-input search rounded-pill my-4" type="search" placeholder="Search" aria-label="Search" />
               <span class="fas fa-search search-box-icon"></span>
-
             </form>
           </div>
-        </div>
+        </div> 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item border-bottom border-translucent border-bottom-lg-0"><a class="nav-link lh-1 py-0 fs-9 fw-bold py-3" aria-current="page" href="#">Home</a></li>
           <li class="nav-item border-bottom border-translucent border-bottom-lg-0"><a class="nav-link lh-1 py-0 fs-9 fw-bold py-3" href="#feature">Features</a></li>
@@ -36,7 +35,8 @@
               <label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="moon"></span></label>
               <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="sun"></span></label>
             </div>
-          </div><a class="text-body-tertiary text-body-emphasis-hover px-2 d-none d-lg-inline lh-sm" href="#" data-bs-toggle="modal" data-bs-target="#searchBoxModal"><span data-feather="search" style="height: 20px; width: 20px;"></span></a><a class="btn btn-link text-body order-1 order-lg-0 ps-4 me-lg-2" href="{% static 'pages/authentication/simple/sign-in.html'%}">Sign in</a><a class="btn btn-phoenix-primary order-0" href="{% static 'pages/authentication/simple/sign-up.html'%}"><span class="fw-bold">Sign Up</span></a>
+          </div>
+          <a class="btn btn-link text-body order-1 order-lg-0 ps-4 me-lg-2" href="{% static 'pages/authentication/simple/sign-in.html'%}">Sign in</a><a class="btn btn-phoenix-primary order-0" href="{% static 'pages/authentication/simple/sign-up.html'%}"><span class="fw-bold">Sign Up</span></a>
         </div>
       </div>
     </nav>
@@ -181,28 +181,4 @@
       </div>
     </div>
   </div>
-  <section class="bg-body-emphasis pb-8" id="home">
-    <div class="container-small hero-header-container px-lg-7 px-xxl-3">
-      <div class="row align-items-center">
-        <div class="col-12 col-lg-auto order-0 order-md-1 text-end order-1">
-          <div class="position-relative p-5 p-md-7 d-lg-none">
-            <div class="bg-holder" style="background-image:url({% static 'assets/img/bg/bg-23.png'%});background-size:contain;">
-            </div>
-            <!--/.bg-holder-->
-
-            <div class="position-relative"><img class="w-100 shadow-lg d-dark-none rounded-2" src="{% static 'assets/img/bg/bg-31.png'%}" alt="hero-header" /><img class="w-100 shadow-lg d-light-none rounded-2" src="{% static 'assets/img/bg/bg-30.png'%}" alt="hero-header" /></div>
-          </div>
-          <div class="hero-image-container position-absolute top-0 bottom-0 end-0 d-none d-lg-block">
-            <div class="position-relative h-100 w-100">
-              <div class="position-absolute h-100 top-0 d-flex align-items-center end-0 hero-image-container-bg"><img class="pt-7 pt-md-0 w-100" src="{% static 'assets/img/bg/bg-1-2.png'%}" alt="hero-header" /></div>
-              <div class="position-absolute h-100 top-0 d-flex align-items-center end-0"><img class="pt-7 pt-md-0 w-100 shadow-lg d-dark-none rounded-2" src="{% static 'assets/img/bg/bg-28.png'%}" alt="hero-header" /><img class="pt-7 pt-md-0 w-100 shadow-lg d-light-none rounded-2" src="{% static 'assets/img/bg/bg-29.png'%}" alt="hero-header" /></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6 text-lg-start text-center pt-8 pb-6 order-0 position-relative">
-          <h1 class="fs-3 fs-lg-2 fs-md-1 fs-lg-2 fs-xl-1 fs fw-black mb-4"><span class="text-primary me-3">Elegance</span>for<br />your web app</h1>
-          <p class="mb-5">Standard, modern and Elegant solution for your next web app so you don’t have to look further. Sign up or check the demo below.</p><a class="btn btn-lg btn-primary rounded-pill me-3" href="#!" role="button">Sign up</a><a class="btn btn-link me-2 fs-8 p-0" href="#!" role="button">Check Demo<span class="fa-solid fa-angle-right ms-2 fs-9"></span></a>
-        </div>
-      </div>
-    </div>
-  </section>
+  
