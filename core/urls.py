@@ -22,4 +22,5 @@ urlpatterns = [
     #path("accounts/", include("accounts.urls")),
     path('app/', include("apps.sod.urls")),
     path('admin/', admin.site.urls),
+    path("app/demo/", include("apps.demo.urls")),
 ]
