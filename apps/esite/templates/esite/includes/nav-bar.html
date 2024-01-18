@@ -1,0 +1,208 @@
+{% load static %}
+<div class="bg-body-emphasis sticky-top landing-navbar" data-navbar-shadow-on-scroll="data-navbar-shadow-on-scroll">
+    <nav class="navbar navbar-expand-lg container-small px-3 px-lg-7 px-xxl-3"><a class="navbar-brand flex-1 flex-lg-grow-0" href="{% static 'index.html'%}">
+        <div class="d-flex align-items-center"><img src="{% static 'assets/img/icons/logo.png'%}" alt="phoenix" width="27" />
+          <p class="logo-text ms-2">phoenix</p>
+        </div>
+      </a>
+      <div class="d-lg-none">
+        <div class="theme-control-toggle fa-icon-wait px-2">
+          <input class="form-check-input ms-0 theme-control-toggle-input" type="checkbox" data-theme-control="phoenixTheme" value="dark" id="themeControlToggleSm" />
+          <label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggleSm" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="moon"></span></label>
+          <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggleSm" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="sun"></span></label>
+        </div>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="border-bottom border-translucent border-bottom-lg-0 mb-2">
+          <div class="search-box d-inline d-lg-none">
+            <form class="position-relative" data-bs-toggle="search" data-bs-display="static">
+              <input class="form-control search-input search rounded-pill my-4" type="search" placeholder="Search" aria-label="Search" />
+              <span class="fas fa-search search-box-icon"></span>
+
+            </form>
+          </div>
+        </div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item border-bottom border-translucent border-bottom-lg-0"><a class="nav-link lh-1 py-0 fs-9 fw-bold py-3" aria-current="page" href="#">Home</a></li>
+          <li class="nav-item border-bottom border-translucent border-bottom-lg-0"><a class="nav-link lh-1 py-0 fs-9 fw-bold py-3" href="#feature">Features</a></li>
+          <li class="nav-item border-bottom border-translucent border-bottom-lg-0"><a class="nav-link lh-1 py-0 fs-9 fw-bold py-3" href="#blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link lh-1 py-0 fs-9 fw-bold py-3" href="#team">Team</a></li>
+        </ul>
+        <div class="d-grid d-lg-flex align-items-center">
+          <div class="nav-item d-flex align-items-center d-none d-lg-block pe-2">
+            <div class="theme-control-toggle fa-icon-wait px-2">
+              <input class="form-check-input ms-0 theme-control-toggle-input" type="checkbox" data-theme-control="phoenixTheme" value="dark" id="themeControlToggle" />
+              <label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="moon"></span></label>
+              <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="sun"></span></label>
+            </div>
+          </div><a class="text-body-tertiary text-body-emphasis-hover px-2 d-none d-lg-inline lh-sm" href="#" data-bs-toggle="modal" data-bs-target="#searchBoxModal"><span data-feather="search" style="height: 20px; width: 20px;"></span></a><a class="btn btn-link text-body order-1 order-lg-0 ps-4 me-lg-2" href="{% static 'pages/authentication/simple/sign-in.html'%}">Sign in</a><a class="btn btn-phoenix-primary order-0" href="{% static 'pages/authentication/simple/sign-up.html'%}"><span class="fw-bold">Sign Up</span></a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="modal fade" id="searchBoxModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="true" data-phoenix-modal="data-phoenix-modal" style="--phoenix-backdrop-opacity: 1;">
+    <div class="modal-dialog">
+      <div class="modal-content mt-15 rounded-pill">
+        <div class="modal-body p-0">
+          <div class="search-box navbar-top-search-box" data-list='{"valueNames":["title"]}' style="width: auto;">
+            <form class="position-relative" data-bs-toggle="search" data-bs-display="static">
+              <input class="form-control search-input fuzzy-search rounded-pill form-control-lg" type="search" placeholder="Search..." aria-label="Search" />
+              <span class="fas fa-search search-box-icon"></span>
+
+            </form>
+            <div class="btn-close position-absolute end-0 top-50 translate-middle cursor-pointer shadow-none" data-bs-dismiss="search">
+              <button class="btn btn-link p-0" aria-label="Close"></button>
+            </div>
+            <div class="dropdown-menu border start-0 py-0 overflow-hidden w-100">
+              <div class="scrollbar-overlay" style="max-height: 30rem;">
+                <div class="list pb-3">
+                  <h6 class="dropdown-header text-body-highlight fs-10 py-2">24 <span class="text-body-quaternary">results</span></h6>
+                  <hr class="my-0" />
+                  <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">Recently Searched </h6>
+                  <div class="py-2"><a class="dropdown-item" href="{% static 'apps/e-commerce/landing/product-details.html'%}">
+                      <div class="d-flex align-items-center">
+
+                        <div class="fw-normal text-body-highlight title"><span class="fa-solid fa-clock-rotate-left" data-fa-transform="shrink-2"></span> Store Macbook</div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="{% static 'apps/e-commerce/landing/product-details.html'%}">
+                      <div class="d-flex align-items-center">
+
+                        <div class="fw-normal text-body-highlight title"> <span class="fa-solid fa-clock-rotate-left" data-fa-transform="shrink-2"></span> MacBook Air - 13″</div>
+                      </div>
+                    </a>
+
+                  </div>
+                  <hr class="my-0" />
+                  <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">Products</h6>
+                  <div class="py-2"><a class="dropdown-item py-2 d-flex align-items-center" href="{% static 'apps/e-commerce/landing/product-details.html'%}">
+                      <div class="file-thumbnail me-2"><img class="h-100 w-100 fit-cover rounded-3" src="{% static 'assets/img/products/60x60/3.png'%}" alt="" /></div>
+                      <div class="flex-1">
+                        <h6 class="mb-0 text-body-highlight title">MacBook Air - 13″</h6>
+                        <p class="fs-10 mb-0 d-flex text-body-tertiary"><span class="fw-medium text-body-tertiary text-opactity-85">8GB Memory - 1.6GHz - 128GB Storage</span></p>
+                      </div>
+                    </a>
+                    <a class="dropdown-item py-2 d-flex align-items-center" href="{% static 'apps/e-commerce/landing/product-details.html'%}">
+                      <div class="file-thumbnail me-2"><img class="img-fluid" src="{% static 'assets/img/products/60x60/3.png'%}" alt="" /></div>
+                      <div class="flex-1">
+                        <h6 class="mb-0 text-body-highlight title">MacBook Pro - 13″</h6>
+                        <p class="fs-10 mb-0 d-flex text-body-tertiary"><span class="fw-medium text-body-tertiary text-opactity-85 ms-2">30 Sep at 12:30 PM</span></p>
+                      </div>
+                    </a>
+
+                  </div>
+                  <hr class="my-0" />
+                  <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">Quick Links</h6>
+                  <div class="py-2"><a class="dropdown-item" href="{% static 'apps/e-commerce/landing/product-details.html'%}">
+                      <div class="d-flex align-items-center">
+
+                        <div class="fw-normal text-body-highlight title"><span class="fa-solid fa-link text-body" data-fa-transform="shrink-2"></span> Support MacBook House</div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="{% static 'apps/e-commerce/landing/product-details.html'%}">
+                      <div class="d-flex align-items-center">
+
+                        <div class="fw-normal text-body-highlight title"> <span class="fa-solid fa-link text-body" data-fa-transform="shrink-2"></span> Store MacBook″</div>
+                      </div>
+                    </a>
+
+                  </div>
+                  <hr class="my-0" />
+                  <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">Files</h6>
+                  <div class="py-2"><a class="dropdown-item" href="{% static 'apps/e-commerce/landing/product-details.html'%}">
+                      <div class="d-flex align-items-center">
+
+                        <div class="fw-normal text-body-highlight title"><span class="fa-solid fa-file-zipper text-body" data-fa-transform="shrink-2"></span> Library MacBook folder.rar</div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="{% static 'apps/e-commerce/landing/product-details.html'%}">
+                      <div class="d-flex align-items-center">
+
+                        <div class="fw-normal text-body-highlight title"> <span class="fa-solid fa-file-lines text-body" data-fa-transform="shrink-2"></span> Feature MacBook extensions.txt</div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="{% static 'apps/e-commerce/landing/product-details.html'%}">
+                      <div class="d-flex align-items-center">
+
+                        <div class="fw-normal text-body-highlight title"> <span class="fa-solid fa-image text-body" data-fa-transform="shrink-2"></span> MacBook Pro_13.jpg</div>
+                      </div>
+                    </a>
+
+                  </div>
+                  <hr class="my-0" />
+                  <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">Members</h6>
+                  <div class="py-2"><a class="dropdown-item py-2 d-flex align-items-center" href="{% static 'pages/members.html'%}">
+                      <div class="avatar avatar-l status-online  me-2 text-body">
+                        <img class="rounded-circle " src="{% static 'assets/img/team/40x40/10.webp'%}" alt="" />
+
+                      </div>
+                      <div class="flex-1">
+                        <h6 class="mb-0 text-body-highlight title">Carry Anna</h6>
+                        <p class="fs-10 mb-0 d-flex text-body-tertiary">anna@technext.it</p>
+                      </div>
+                    </a>
+                    <a class="dropdown-item py-2 d-flex align-items-center" href="{% static 'pages/members.html'%}">
+                      <div class="avatar avatar-l  me-2 text-body">
+                        <img class="rounded-circle " src="{% static 'assets/img/team/40x40/12.webp'%}" alt="" />
+
+                      </div>
+                      <div class="flex-1">
+                        <h6 class="mb-0 text-body-highlight title">John Smith</h6>
+                        <p class="fs-10 mb-0 d-flex text-body-tertiary">smith@technext.it</p>
+                      </div>
+                    </a>
+
+                  </div>
+                  <hr class="my-0" />
+                  <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">Related Searches</h6>
+                  <div class="py-2"><a class="dropdown-item" href="{% static 'apps/e-commerce/landing/product-details.html'%}">
+                      <div class="d-flex align-items-center">
+
+                        <div class="fw-normal text-body-highlight title"><span class="fa-brands fa-firefox-browser text-body" data-fa-transform="shrink-2"></span> Search in the Web MacBook</div>
+                      </div>
+                    </a>
+                    <a class="dropdown-item" href="{% static 'apps/e-commerce/landing/product-details.html'%}">
+                      <div class="d-flex align-items-center">
+
+                        <div class="fw-normal text-body-highlight title"> <span class="fa-brands fa-chrome text-body" data-fa-transform="shrink-2"></span> Store MacBook″</div>
+                      </div>
+                    </a>
+
+                  </div>
+                </div>
+                <div class="text-center">
+                  <p class="fallback fw-bold fs-7 d-none">No Result Found.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="bg-body-emphasis pb-8" id="home">
+    <div class="container-small hero-header-container px-lg-7 px-xxl-3">
+      <div class="row align-items-center">
+        <div class="col-12 col-lg-auto order-0 order-md-1 text-end order-1">
+          <div class="position-relative p-5 p-md-7 d-lg-none">
+            <div class="bg-holder" style="background-image:url({% static 'assets/img/bg/bg-23.png'%});background-size:contain;">
+            </div>
+            <!--/.bg-holder-->
+
+            <div class="position-relative"><img class="w-100 shadow-lg d-dark-none rounded-2" src="{% static 'assets/img/bg/bg-31.png'%}" alt="hero-header" /><img class="w-100 shadow-lg d-light-none rounded-2" src="{% static 'assets/img/bg/bg-30.png'%}" alt="hero-header" /></div>
+          </div>
+          <div class="hero-image-container position-absolute top-0 bottom-0 end-0 d-none d-lg-block">
+            <div class="position-relative h-100 w-100">
+              <div class="position-absolute h-100 top-0 d-flex align-items-center end-0 hero-image-container-bg"><img class="pt-7 pt-md-0 w-100" src="{% static 'assets/img/bg/bg-1-2.png'%}" alt="hero-header" /></div>
+              <div class="position-absolute h-100 top-0 d-flex align-items-center end-0"><img class="pt-7 pt-md-0 w-100 shadow-lg d-dark-none rounded-2" src="{% static 'assets/img/bg/bg-28.png'%}" alt="hero-header" /><img class="pt-7 pt-md-0 w-100 shadow-lg d-light-none rounded-2" src="{% static 'assets/img/bg/bg-29.png'%}" alt="hero-header" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 text-lg-start text-center pt-8 pb-6 order-0 position-relative">
+          <h1 class="fs-3 fs-lg-2 fs-md-1 fs-lg-2 fs-xl-1 fs fw-black mb-4"><span class="text-primary me-3">Elegance</span>for<br />your web app</h1>
+          <p class="mb-5">Standard, modern and Elegant solution for your next web app so you don’t have to look further. Sign up or check the demo below.</p><a class="btn btn-lg btn-primary rounded-pill me-3" href="#!" role="button">Sign up</a><a class="btn btn-link me-2 fs-8 p-0" href="#!" role="button">Check Demo<span class="fa-solid fa-angle-right ms-2 fs-9"></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
