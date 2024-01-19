@@ -37,11 +37,11 @@ def login_view(request):
         if response['status'] == 'success':
             request.session['email'] = data['email']
             request.session['token'] = response.get('token')
-            return redirect('apps.accounts:home')
+            return redirect('index')
         else:
             messages.error(request, 'Login failed. Please try again.')
     else:
-        return render(request, 'sod/login.html')
+        return render(request, 'accounts/login.html')
 
 def home_view(request):
     if request.method == 'POST':
