@@ -155,7 +155,8 @@ ENV = os.getenv('SOD_ENV')
 print("SOD_ENV is : "+ENV)
 # Set the logging level based on the environment
 if ENV == 'dev':
-    LOG_LEVEL = 'INFO'
+    LOG_LEVEL = 'WARNING'
+    #LOG_LEVEL = 'INFO'
 elif ENV == 'qa':
     LOG_LEVEL = 'INFO'
 elif ENV == 'prod':
