@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from core.users_api_service import register_user, login_user, logout_user
 from django.contrib import messages
+from .forms import SignUpForm
 
 def logout_view(request):
     data = {}
@@ -10,6 +11,32 @@ def logout_view(request):
     return redirect('/')
 
 def register_view(request):
+    msg = None
+    success = False
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            data = {
+            'email': request.POST['email'],
+            'password': request.POST['password'],
+                 }
+            response = register_user(data)
+            if response['status'] == 'success':
+                request.session['email'] = data['email']
+                request.session['token'] = response.get('token')
+                return redirect('home')
+            else:
+                msg = 'Provided data is not valid'
+    else:
+        form = SignUpForm()
+
+    return render(request, "accounts/register3.html", {"form": form, "msg": msg, "success": success})
+
+def register_view2(request):
+    form = SignUpForm(request.POST)
+    msg = None
+    success = False
+
     if request.method == 'POST':
         data = {
             'email': request.POST['email'],
@@ -24,7 +51,7 @@ def register_view(request):
         else:
             messages.error(request, 'Registration failed. Please try again.')
     else:
-        return render(request, 'accounts/register.html')
+        return render(request, 'accounts/register2.html',{"form": form, "msg": msg, "success": success})
 
 def login_view(request):
     if request.method == 'POST':
