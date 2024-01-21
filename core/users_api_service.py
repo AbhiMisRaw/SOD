@@ -22,7 +22,7 @@ def register_user(data):
     }
 
     response = requests.post(f'{BASE_URL}user/register/', data=data, headers=headers)
-    return response.json()
+    return response
 
 def login_user(data):
     response = requests.post(f'{BASE_URL}user/login/', data=data)

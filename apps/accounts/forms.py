@@ -10,7 +10,6 @@ class SignUpForm(UserCreationForm):
             attrs={
                 "placeholder": "Email",
                 "class": "form-control",
-                "required":"",
             }
         ))
     password1 = forms.CharField(
@@ -18,9 +17,6 @@ class SignUpForm(UserCreationForm):
             attrs={
                 "placeholder": "Password",
                 "class": "form-control form-icon-input",
-                "id":"password",
-                "required":"",
-
             }
         ))
     password2 = forms.CharField(
@@ -28,8 +24,6 @@ class SignUpForm(UserCreationForm):
             attrs={
                 "placeholder": "Password check",
                 "class": "form-control form-icon-input",
-                "id":"confirmPassword",
-                "required":"",
             }
         ))
     class Meta:

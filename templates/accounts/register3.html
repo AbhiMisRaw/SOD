@@ -52,23 +52,43 @@
                                 {% csrf_token %}
                                 <div class="col-md-12">
                               
-                                  <label class="form-label" for="validationCustomUsername">Username</label>
+                                  <label class="form-label" for="validationCustomUsername">Email</label>
                               
                                   <div class="input-group has-validation">
                                     <span class="input-group-text" id="inputGroupPrepend">@</span>
                               
                                     <input class="form-control" name="email" id="id_email" value="{%if form.name.value%}{{form.name.value}}{%endif%}" type="text" aria-describedby="inputGroupPrepend" required="" />
-                                    {% comment %} <div class="invalid-feedback">Please choose a username.</div> {% endcomment %}
                                     {% if form.errors.email %}
                                     <div class="invalid-feedback" style="display: block;font-size: 85%;" >
                                          {{ form.errors.email|join:", " }}
-                                        </div>
+                                    </div>
                                     {% endif %} 
                                   </div>
                                 </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary" type="submit">Submit form</button>
-                                </div>
+                                <div class="row g-3 mb-3">
+                                    <div class="col-xl-6">
+                                      <label class="form-label" for="password">Password</label>
+                                      <input class="form-control" name="password1" id="id_password1" value="{%if form.password1.value%}{{form.password1.value}}{%endif%}" type="password" aria-describedby="inputGroupPrepend" required="" />
+                                        {% if form.errors.password1 %}
+                                        <div class="invalid-feedback" style="display: block;font-size: 85%;">{{ form.errors.password1|join:", " }}</div>
+                                        {% endif %} 
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <label class="form-label" for="password">Confirm Password</label>
+                                        <input class="form-control" name="password2" id="id_password2" value="{%if form.password2.value%}{{form.password2.value}}{%endif%}" type="password" aria-describedby="inputGroupPrepend" required="" />
+                                        {% if form.errors.password2 %}
+                                        <div class="invalid-feedback" style="display: block;font-size: 85%;">{{ form.errors.password2|join:", " }}</div>
+                                        {% endif %} 
+                                    </div>
+                                </div>    
+                                {% comment %} <div class="form-check mb-3">
+                                    <input class="form-check-input" id="termsService" type="checkbox" required=""/>
+                                    <label class="form-label fs-9 text-transform-none" for="termsService">I accept the <a href="#!">terms </a>and <a href="#!">privacy policy</a></label>
+                                    <div class="invalid-feedback">
+                                        Please tick the box if you agree to terms and conditions.
+                                    </div>
+                                </div> {% endcomment %}
+                                  <button class="btn btn-primary w-100 mb-3">Sign up</button>
                               </form>
                             </div>
                           </div>
