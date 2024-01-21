@@ -17,19 +17,22 @@ def register_view(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             data = {
-            'email': request.POST['email'],
+            'username': request.POST['email'],
             'password': request.POST['password1'],
                  }
             response = register_user(data)
             if response.status_code == 201:
                 success = True
                 msg = 'User created successfully'
-                request.session['email'] = data['email']
+                request.session['email'] = data['username']
                 request.session['token'] = response.json().get('token')
                 return redirect('index')
             elif response.status_code == 400:
-                error_message = response.json()["error"]
-                form.add_error("email", error_message)
+                error_data = response.json()
+                if "username" in error_data:
+                    form.add_error("email", error_data["username"][0])
+                if "password" in error_data:
+                    form.add_error("password", error_data["password"][0])
             else:
                 msg = 'Provided data is not valid'
     else:
