@@ -115,6 +115,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# SECURE SESSION COOKIES
+
+# settings.py
+
+# Ensure the session cookie is only sent over HTTPS
+# ALWAYS SET IT TO TRUE IN PRODUCTION
+SESSION_COOKIE_SECURE = True
+
+# Prevent client-side JavaScript from accessing the session cookie
+SESSION_COOKIE_HTTPONLY = True
+
+# Set SESSION_COOKIE_AGE to the desired duration in seconds.
+# For example, 1209600 seconds (2 weeks).
+SESSION_COOKIE_AGE = 1209600  # 2 weeks in seconds
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
