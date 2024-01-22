@@ -48,6 +48,22 @@
                                 <hr class="bg-body-secondary" />
                                 <div class="divider-content-center bg-body-emphasis">sign up with email</div>
                               </div>
+                              {% if msg %}
+                                  {% if success %}
+                                  <div class="alert alert-subtle-success" role="alert">
+                                    <h4 class="alert-heading fw-semibold">Well done!</h4>
+                                    <p>{{ msg | safe }}</p>
+                                  </div>
+                                  {% else %}
+                                  <div class="alert alert-phoenix-warning" role="alert">{{ msg | safe }}</div>
+                                  {% endif %}
+                              {% endif %}
+                              <!-- Hide the form on success -->
+                              {% if success %}
+                              <div class="col-md-12">
+                              <a href="{% url 'apps.accounts:login'%}" class="btn btn-primary w-100 mb-3">Sign In</a>
+                              </div>
+                              {% else %}
                               <form class="row g-3 needs-validation" novalidate="" method="post" action="">
                                 {% csrf_token %}
                                 <div class="col-md-12">
@@ -57,7 +73,7 @@
                                   <div class="input-group has-validation">
                                     <span class="input-group-text" id="inputGroupPrepend">@</span>
                               
-                                    <input class="form-control" name="email" id="id_email" value="{%if form.name.value%}{{form.name.value}}{%endif%}" type="text" aria-describedby="inputGroupPrepend" required="" />
+                                    <input class="form-control" name="email" id="id_email" value="{%if form.email.value%}{{form.email.value}}{%endif%}" type="text" aria-describedby="inputGroupPrepend" required="" />
                                     {% if form.errors.email %}
                                     <div class="invalid-feedback" style="display: block;font-size: 85%;" >
                                          {{ form.errors.email|join:", " }}
@@ -90,6 +106,7 @@
                                 </div> {% endcomment %}
                                   <button class="btn btn-primary w-100 mb-3">Sign up</button>
                               </form>
+                              {%endif%} 
                             </div>
                           </div>
                     </div>

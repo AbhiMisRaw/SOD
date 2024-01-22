@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from core.users_api_service import register_user, login_user, logout_user
 from django.contrib import messages
 from .forms import SignUpForm
+from .actions.user_profile import do_create_user_profile
 
 def logout_view(request):
     data = {}
@@ -26,15 +27,24 @@ def register_view(request):
                 msg = 'User created successfully'
                 request.session['email'] = data['username']
                 request.session['token'] = response.json().get('token')
-                return redirect('index')
+                user_id = response.json().get('user_id')
+                profile = do_create_user_profile(user_id=user_id, country="IN")
+                request.session['user_id'] = user_id
+                request.session['user_profile_id'] = profile.id 
+                #return redirect('index')
+                msg = 'User registration successful. Please click Sign In.'
+                success = True
             elif response.status_code == 400:
                 error_data = response.json()
                 if "username" in error_data:
                     form.add_error("email", error_data["username"][0])
                 if "password" in error_data:
                     form.add_error("password", error_data["password"][0])
-            else:
-                msg = 'Provided data is not valid'
+                msg = "There was a problem in registration. Please fix the errors and try again."
+                success = False
+        else:
+            msg = 'There was problem with provided input. Please fix the errors and try again.'
+            success = False
     else:
         form = SignUpForm()
 
