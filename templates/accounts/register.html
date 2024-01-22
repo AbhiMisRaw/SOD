@@ -1,19 +1,138 @@
-<!-- FILEPATH: /f:/dev/SOD/accounts/templates/accounts/register.html -->
+{% extends "layouts/base-fullscreen.html" %}
+{% load static %}
+{% block title %} Login {% endblock %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Register</title>
-</head>
-<body>
-    <h1>Register</h1>
-    <form method="POST" action="{% url 'apps.accounts:register' %}">
-        {% csrf_token %}
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" value="Register">
-    </form>
-</body>
-</html>
+{% block content %}   
+
+<!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+        <div class="container-fluid bg-body-tertiary dark__bg-gray-1200">
+          <div class="bg-holder bg-auth-card-overlay" style="background-image:url({% static 'assets/img/bg/37.png'%});">
+          </div>
+          <!--/.bg-holder-->
+  
+          <div class="row flex-center position-relative min-vh-100 g-0 py-5">
+            <div class="col-11 col-sm-10 col-xl-8">
+              <div class="card border border-translucent auth-card">
+                <div class="card-body pe-md-0">
+                  <div class="row align-items-center gx-0 gy-7">
+                    <div class="col-auto bg-body-highlight dark__bg-gray-1100 rounded-3 position-relative overflow-hidden auth-title-box">
+                      <div class="bg-holder" style="background-image:url({% static 'assets/img/bg/38.png'%});">
+                      </div>
+                      <!--/.bg-holder-->
+  
+                      <div class="position-relative px-4 px-lg-7 pt-7 pb-7 pb-sm-5 text-center text-md-start pb-lg-7 pb-md-7">
+                        <h3 class="mb-3 text-body-emphasis fs-7">StockODiary Login</h3>
+                        <p class="text-body-tertiary">One place to track all your trades </p>
+                        <ul class="list-unstyled mb-0 w-max-content w-md-auto">
+                          <li class="d-flex align-items-center"><span class="uil uil-check-circle text-success me-2"></span><span class="text-body-tertiary fw-semibold">Plan</span></li>
+                          <li class="d-flex align-items-center"><span class="uil uil-check-circle text-success me-2"></span><span class="text-body-tertiary fw-semibold">Trade</span></li>
+                          <li class="d-flex align-items-center"><span class="uil uil-check-circle text-success me-2"></span><span class="text-body-tertiary fw-semibold">Track</span></li>
+                        </ul>
+                      </div>
+                      <div class="position-relative z-n1 mb-6 d-none d-md-block text-center mt-md-15"><img class="auth-title-box-img d-dark-none" src="{% static 'assets/img/spot-illustrations/auth.png'%}" alt="" /><img class="auth-title-box-img d-light-none" src="{% static 'assets/img/spot-illustrations/auth-dark.png'%}" alt="" /></div>
+                    </div>
+                    <div class="col mx-auto">
+                        <div class="col mx-auto">
+                            <div class="auth-form-box">
+                              <div class="text-center mb-7"><a class="d-flex flex-center text-decoration-none mb-4" href="{% static 'index.html'%}">
+                                  <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block"><img src="{% static 'assets/img/icons/logo.png'%}" alt="phoenix" width="58" />
+                                  </div>
+                                </a>
+                                <h3 class="text-body-highlight">Sign Up</h3>
+                                <p class="text-body-tertiary">Create your account today</p>
+                              </div>
+                              <div class="position-relative mt-4">
+                                <hr class="bg-body-secondary" />
+                                <div class="divider-content-center bg-body-emphasis">sign up with email</div>
+                              </div>
+                              {% if msg %}
+                                  {% if success %}
+                                  <div class="alert alert-subtle-success" role="alert">
+                                    <h4 class="alert-heading fw-semibold">Well done!</h4>
+                                    <p>{{ msg | safe }}</p>
+                                  </div>
+                                  {% else %}
+                                  <div class="alert alert-phoenix-warning" role="alert">{{ msg | safe }}</div>
+                                  {% endif %}
+                              {% endif %}
+                              <!-- Hide the form on success -->
+                              {% if success %}
+                              <div class="col-md-12">
+                              <a href="{% url 'apps.accounts:login'%}" class="btn btn-primary w-100 mb-3">Sign In</a>
+                              </div>
+                              {% else %}
+                              <form class="row g-3 needs-validation" novalidate="" method="post" action="">
+                                {% csrf_token %}
+                                <div class="col-md-12">
+                              
+                                  <label class="form-label" for="validationCustomUsername">Email</label>
+                              
+                                  <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                              
+                                    <input class="form-control" name="email" id="id_email" value="{%if form.email.value%}{{form.email.value}}{%endif%}" type="text" aria-describedby="inputGroupPrepend" required="" />
+                                    {% if form.errors.email %}
+                                    <div class="invalid-feedback" style="display: block;font-size: 85%;" >
+                                         {{ form.errors.email|join:", " }}
+                                    </div>
+                                    {% endif %} 
+                                  </div>
+                                </div>
+                                <div class="row g-3 mb-3">
+                                    <div class="col-xl-6">
+                                      <label class="form-label" for="password">Password</label>
+                                      <input class="form-control" name="password1" id="id_password1" value="{%if form.password1.value%}{{form.password1.value}}{%endif%}" type="password" aria-describedby="inputGroupPrepend" required="" />
+                                        {% if form.errors.password1 %}
+                                        <div class="invalid-feedback" style="display: block;font-size: 85%;">{{ form.errors.password1|join:", " }}</div>
+                                        {% endif %} 
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <label class="form-label" for="password">Confirm Password</label>
+                                        <input class="form-control" name="password2" id="id_password2" value="{%if form.password2.value%}{{form.password2.value}}{%endif%}" type="password" aria-describedby="inputGroupPrepend" required="" />
+                                        {% if form.errors.password2 %}
+                                        <div class="invalid-feedback" style="display: block;font-size: 85%;">{{ form.errors.password2|join:", " }}</div>
+                                        {% endif %} 
+                                    </div>
+                                </div>    
+                                {% comment %} <div class="form-check mb-3">
+                                    <input class="form-check-input" id="termsService" type="checkbox" required=""/>
+                                    <label class="form-label fs-9 text-transform-none" for="termsService">I accept the <a href="#!">terms </a>and <a href="#!">privacy policy</a></label>
+                                    <div class="invalid-feedback">
+                                        Please tick the box if you agree to terms and conditions.
+                                    </div>
+                                </div> {% endcomment %}
+                                  <button class="btn btn-primary w-100 mb-3">Sign up</button>
+                              </form>
+                              {%endif%} 
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          var navbarTopStyle = window.config.config.phoenixNavbarTopStyle;
+          var navbarTop = document.querySelector('.navbar-top');
+          if (navbarTopStyle === 'darker') {
+            navbarTop.setAttribute('data-navbar-appearance', 'darker');
+          }
+  
+          var navbarVerticalStyle = window.config.config.phoenixNavbarVerticalStyle;
+          var navbarVertical = document.querySelector('.navbar-vertical');
+          if (navbarVertical && navbarVerticalStyle === 'darker') {
+            navbarVertical.setAttribute('data-navbar-appearance', 'darker');
+          }
+        </script>
+        
+      </main>
+      <!-- ===============================================-->
+      <!--    End of Main Content-->
+      <!-- ===============================================-->
+
+{% endblock content %}

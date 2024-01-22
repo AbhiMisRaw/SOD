@@ -48,7 +48,7 @@ def register_view(request):
     else:
         form = SignUpForm()
 
-    return render(request, "accounts/register3.html", {"form": form, "msg": msg, "success": success})
+    return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
 
 def register_view2(request):
     form = SignUpForm(request.POST)
