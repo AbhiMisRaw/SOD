@@ -5,7 +5,7 @@ def home_view(request):
         pass
     else:
         if request.session['token'] is None:
-            return redirect('login')
+            return redirect('apps.accounts:login')
         else:
             token = request.session['token']
             return render(request, 'sod/index.html')

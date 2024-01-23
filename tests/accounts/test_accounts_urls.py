@@ -20,5 +20,4 @@ class Test_Authentication_Urls(BaseTest):
 
     def test_view_auth_register(self,client):
         response = client.get(reverse("apps.accounts:register"))
-
         assert response.status_code == 200
