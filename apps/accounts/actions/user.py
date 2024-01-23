@@ -6,6 +6,25 @@ from apps.accounts.actions.user_profile import do_create_user_profile
 from typing import Optional
 from apps.accounts.models import UserProfile
 
+def is_user_created(username):
+    data = {}
+    data["username"] = username
+    response = search_user_response(data)
+    if response.status_code == 200:
+        users_list = response.json().get('users')
+        if len(users_list) > 0:
+            user = users_list[0]
+            if user.get('username') == username:
+                if user.get('id') != None:
+                    return True
+            return True
+        else:
+            return False
+    elif response.status_code == 404:
+        return False
+    else:
+        return False
+
 def get_or_create_user(username, password):
     data={}
     data["username"] = username

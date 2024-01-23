@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from core.users_api_service import register_user, login_user, logout_user
 from django.contrib import messages
 from .forms import SignUpForm
-from .actions.user_profile import do_create_user_profile
+from .actions.user_profile import do_create_user_profile, get_or_create_user_profile
+from .actions import user as user_actions   
+
 
 def logout_view(request):
     data = {}
@@ -17,31 +19,29 @@ def register_view(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
-            data = {
-            'username': request.POST['email'],
-            'password': request.POST['password1'],
-                 }
-            response = register_user(data)
-            if response.status_code == 201:
-                success = True
-                msg = 'User created successfully'
-                request.session['email'] = data['username']
-                request.session['token'] = response.json().get('token')
-                user_id = response.json().get('user_id')
-                profile = do_create_user_profile(user_id=user_id, country="IN")
-                request.session['user_id'] = user_id
-                request.session['user_profile_id'] = profile.id 
-                #return redirect('index')
-                msg = 'User registration successful. Please click Sign In.'
-                success = True
-            elif response.status_code == 400:
-                error_data = response.json()
-                if "username" in error_data:
-                    form.add_error("email", error_data["username"][0])
-                if "password" in error_data:
-                    form.add_error("password", error_data["password"][0])
-                msg = "There was a problem in registration. Please fix the errors and try again."
-                success = False
+            # data = {
+            # 'username': request.POST['email'],
+            # 'password': request.POST['password1'],
+            #      }
+            user_exists = user_actions.is_user_created(request.POST['email'])
+            user_profile_exists = user_actions.is_user_created(request.POST['email'])
+            if user_exists is False:
+                if user_profile_exists is False:
+                    user_id = user_actions.get_or_create_user(request.POST['email'],request.POST['password1'])
+                    if user_id is not None:
+                        profile = get_or_create_user_profile(user_id=user_id)
+                        if profile is not None:
+                            # request.session['email'] = data['username']
+                            # request.session['user_id'] = user_id  
+                            msg = 'User registration successful. Please click Sign In.'
+                            success = True
+                        else:
+                            msg = "There was a problem in registration. Please contact support team to fix the issue."
+                            success = False
+            else:
+                if user_profile_exists is True:
+                    msg = 'A user already exists with provided email. Please choose another email.'
+                    success = False
         else:
             msg = 'There was problem with provided input. Please fix the errors and try again.'
             success = False
