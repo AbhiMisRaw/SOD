@@ -50,27 +50,6 @@ def register_view(request):
 
     return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
 
-def register_view2(request):
-    form = SignUpForm(request.POST)
-    msg = None
-    success = False
-
-    if request.method == 'POST':
-        data = {
-            'email': request.POST['email'],
-            'password': request.POST['password'],
-            # Add more fields as needed
-        }
-        response = register_user(data)
-        if response['status'] == 'success':
-            request.session['email'] = data['email']
-            request.session['token'] = response.get('token')
-            return redirect('home')
-        else:
-            messages.error(request, 'Registration failed. Please try again.')
-    else:
-        return render(request, 'accounts/register2.html',{"form": form, "msg": msg, "success": success})
-
 def login_view(request):
     if request.method == 'POST':
         data = {

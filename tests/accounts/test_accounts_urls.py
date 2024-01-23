@@ -11,9 +11,9 @@ class Test_Authentication_Urls(BaseTest):
 
         assert response.status_code == 200
 
-    def test_view_auth_logout(self,client,user):
-        self.initialize_user(user,False,False,True)
-        self.user_login(client, user)
+    def test_view_auth_logout(self,client,user,user_profile):
+        self.initialize_user(user_profile,False,False,True)
+        self.login_user(client, user)
         response = client.get(reverse("apps.accounts:logout"))
 
         assert response.status_code == 302
