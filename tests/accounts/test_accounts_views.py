@@ -3,6 +3,8 @@ from django.urls import reverse
 from apps.accounts.actions import user as user_actions, user_profile as user_profile_actions
 from tests.lib import utils
 
+
+
 class Test_Auth_Register_View(BaseTest):
     def test_register_user_view_get(self,client):
         response = client.get(reverse('apps.accounts:register'))
