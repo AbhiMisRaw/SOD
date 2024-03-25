@@ -10,7 +10,7 @@ BASE_URL = 'http://127.0.0.1:7000/api/accounts/'
 # ADMIN_PASSWORD = os.getenv('DIARY_USERS_API_ADMIN_USERNAME')
 
 ADMIN_USERNAME = "admin@mail.com"
-ADMIN_PASSWORD = "Test@123"
+ADMIN_PASSWORD = "Andy@99"
 
 def update_user(user_id, data):
     # Login as admin

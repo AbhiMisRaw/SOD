@@ -11,7 +11,7 @@ class BaseTest:
     def user(self):
         user_obj={}
         test_email = "test@mail.com"
-        test_password = "Test@123"
+        test_password = "Andy@99"
         user_obj["username"] = test_email
         user_obj["password"] = test_password
         yield user_obj
