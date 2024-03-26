@@ -16,7 +16,7 @@ sudo apt-get install python3-pip python3-dev libpq-dev postgresql postgresql-con
 # create a database
 
 sudo -u postgres psql
-CREATE DATABASE sdiarydos;
+CREATE DATABASE sod;
 
 # go to SOD/core/settings.py and update db credentials as per your settings
 
