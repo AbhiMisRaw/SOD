@@ -1,3 +1,14 @@
+License
+Unless specified otherwise, sod is released under the Apache 2.0 except for the code related to UI templates in folder frontend. 
+
+However the code used for UI is not open source and must be purchased from the below url:
+https://prium.github.io/phoenix/v1.14.0/showcase.html
+https://themes.getbootstrap.com/product/phoenix-admin-dashboard-webapp-template/
+
+All rights related UI templates kit and source code related to templates kit belongs with owner listed in above urls.
+Please contact and purchases licenses as applicable before you use the application in the production.
+
+
 # SOD
 StockODiary Website
 
