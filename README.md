@@ -28,6 +28,15 @@ sudo apt-get install python3-pip python3-dev libpq-dev postgresql postgresql-con
 
 sudo -u postgres psql
 CREATE DATABASE sod;
+\q
+
+# Navigate to repo
+cd SOD
+
+# create a python environment
+python3 -m venv .venv --prompt "SOD"
+source .venv/bin/activate
+pip install -r requirements.txt 
 
 # go to SOD/core/settings.py and update db credentials as per your settings
 
@@ -44,9 +53,7 @@ DATABASES = {
 
 # open terminal in root SOD dir location
 
-# create a python environment
-python -m venv .venv --prompt "SOD"
-source .venv/bin/activate
+
 
 # make db migrations
 python manage.py makemigrations
