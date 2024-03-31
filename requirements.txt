@@ -1,6 +1,5 @@
 Django
 psycopg2
-mysqlclient
 python-dotenv
 requests
 pytest-django
