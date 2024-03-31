@@ -82,14 +82,17 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+# https://docs.djangoproject.com/en/5.0/ref/settings/#databases\
+
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+
 
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'sod', 
             'USER': 'postgres', 
-            'PASSWORD': 'Andy@99',
+            'PASSWORD': DB_PASSWORD,
             'HOST': '127.0.0.1', 
             'PORT': '5432',
         },

@@ -53,10 +53,22 @@ DATABASES = {
 
 # open terminal in root SOD dir location
 
+# create .env file
+sudo nano .env
+
+# add below config variables to .env file
+SOD_ENV="dev"
+DB_PASSWORD="ChangeMe"
+
+# first save the changes
+CTRL+O
+ENTER
+
+# exit nano
+CTRL+X
 
 
 # make db migrations
-python manage.py makemigrations
 python manage.py migrate
 
 python manage.py createsuperuser
