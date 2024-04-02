@@ -23,10 +23,10 @@ def register_view(request):
                 msg = 'User registration successful. Please click Sign In.'
                 success = True
             else:
-                msg = "User with provided email already exists. Please choose another email"
+                msg = "A user already exists with provided email. Please choose another email."
 
         else:
-            msg = 'Provided data is not valid'
+            msg = 'There was problem with provided input. Please fix the errors and try again.'
     else:
         form = SignUpForm()
 
