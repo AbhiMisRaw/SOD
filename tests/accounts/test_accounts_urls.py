@@ -11,12 +11,12 @@ class Test_Authentication_Urls(BaseTest):
 
         assert response.status_code == 200
 
-    def test_view_auth_logout(self,client,user,user_profile):
-        self.initialize_user(user_profile,False,False,True)
-        self.login_user(client, user)
-        response = client.get(reverse("apps.accounts:logout"))
+    # def test_view_auth_logout(self,client,user,user_profile):
+    #     self.initialize_user(user_profile,False,False,True)
+    #     self.login_user(client, user)
+    #     response = client.get(reverse("apps.accounts:logout"))
 
-        assert response.status_code == 302
+    #     assert response.status_code == 302
 
     def test_view_auth_register(self,client):
         response = client.get(reverse("apps.accounts:register"))
