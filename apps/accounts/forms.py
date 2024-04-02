@@ -4,6 +4,22 @@ from django.contrib.auth.models import User
 import re
 from apps.lib import constants
 
+class LoginForm(forms.Form):
+    email = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Email",
+                "class": "form-control"
+            }
+        ))
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Password",
+                "class": "form-control"
+            }
+        ))
+
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(
         widget=forms.EmailInput(
