@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.sod',
     'apps.demo',
     'apps.esite',
+    'apps.home'
 ]
 
 MIDDLEWARE = [
