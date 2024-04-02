@@ -39,7 +39,7 @@ def login_view(request):
             email = form.cleaned_data.get("email")
             password = form.cleaned_data.get("password")
             user = authenticate(username=email, password=password)
-            return HttpResponse("Welcome user")
+            return render(request, 'home/index.html')
     else:
         return render(request, 'accounts/login.html')
 
