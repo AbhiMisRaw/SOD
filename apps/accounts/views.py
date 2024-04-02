@@ -1,16 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import SignUpForm, LoginForm
 from apps.accounts.lib import user as user_lib
-from django.contrib.auth import authenticate
-
-
-# def logout_view(request):
-#     data = {}
-#     data['token'] = request.session['token']
-#     logout_user(data)
-#     request.session['token'] = None
-#     return redirect('/')
+from django.contrib.auth import authenticate, login
 
 def register_view(request):
     msg = None
@@ -39,7 +31,11 @@ def login_view(request):
             email = form.cleaned_data.get("email")
             password = form.cleaned_data.get("password")
             user = authenticate(username=email, password=password)
-            return render(request, 'home/index.html')
+            if user is not None:
+                login(request, user)
+                return redirect("/app/")
+            else:
+                msg = 'Invalid credentials'
     else:
         return render(request, 'accounts/login.html')
 
