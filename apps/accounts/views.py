@@ -1,8 +1,13 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .forms import SignUpForm, LoginForm
 from apps.accounts.lib import user as user_lib
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout as auth_logout
+from django.urls import reverse
+
+def logout_view(request):
+    auth_logout(request)
+    return HttpResponseRedirect(reverse('landing_page')) 
 
 def register_view(request):
     msg = None
