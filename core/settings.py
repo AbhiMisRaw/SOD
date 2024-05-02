@@ -86,6 +86,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases\
 
+DB_USER = os.getenv('DB_USER')
 DB_PASSWORD = os.getenv('DB_PASSWORD')
 
 
@@ -93,7 +94,7 @@ DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'sod', 
-            'USER': 'postgres', 
+            'USER': DB_USER, 
             'PASSWORD': DB_PASSWORD,
             'HOST': '127.0.0.1', 
             'PORT': '5432',
@@ -185,6 +186,9 @@ elif ENV == 'uat':
 else:
     LOG_LEVEL = 'DEBUG'
 
+LOGGER_ROOT = os.path.join(CORE_DIR, 'logs/sod-server.log')
+os.makedirs(os.path.dirname(LOGGER_ROOT), exist_ok=True)  # Create the directory if it does not exist
+open(LOGGER_ROOT, 'a').close()  # Create the file if it does not exist
 LOGGER_ROOT = os.path.join(CORE_DIR, 'logs/sod-server.log')
 print("Logger root is : "+ LOGGER_ROOT)
 print("Loading log level : "+LOG_LEVEL + " as per env : "+ENV)
